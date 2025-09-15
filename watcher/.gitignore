@@ -1,0 +1,19 @@
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+
+# Virtual environments
+.venv
+
+# Ruff chache folder
+.ruff_cache/
+
+# VS Code workspace configs
+.vscode/
+
+# ENV file
+.env
