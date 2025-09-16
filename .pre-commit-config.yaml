@@ -1,0 +1,40 @@
+repos:
+- repo: https://github.com/pre-commit/pre-commit-hooks
+  rev: v6.0.0
+  hooks:
+  - id: check-merge-conflict
+  - id: check-toml
+
+# watcher
+- repo: local
+  hooks:
+  - id: uv-lock
+    name: uv lock
+    language: system
+    entry: bash -c 'cd watcher && uv lock'
+    files: ^watcher/(uv\.lock|pyproject\.toml|uv\.toml)$
+    pass_filenames: false
+  
+  - id: ruff-check
+    name: ruff check
+    language: system
+    entry: bash -c 'cd watcher && uv run ruff check --force-exclude'
+    files: ^watcher/
+    types_or: [python, pyi]
+    require_serial: true
+
+  - id: pyright
+    name: pyright
+    language: system
+    entry: bash -c 'cd watcher && uv run pyright'
+    files: ^watcher/
+    types_or: [python, pyi]
+    require_serial: true
+  
+  - id: ruff-format-check
+    name: ruff format check
+    language: system
+    entry: bash -c 'cd watcher && uv run ruff format --diff --force-exclude'
+    files: ^watcher/
+    types_or: [python, pyi]
+    require_serial: true
