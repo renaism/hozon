@@ -6,14 +6,9 @@ members = ["modules/*", "packages/*"]
 
 [dependency-groups]
 dev = [
-    "pyright>=1.1.405",
     "ruff>=0.13.0",
+    "ty>=0.0.1a20",
 ]
 
 [tool.ruff.lint]
 select = ["E4", "E7", "E9", "F", "I"]
-
-[tool.pyright]
-exclude = [".venv"]
-venvPath = "."
-venv = ".venv"

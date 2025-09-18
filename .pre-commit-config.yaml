@@ -15,18 +15,18 @@ repos:
     files: ^watcher/(uv\.lock|pyproject\.toml|uv\.toml)$
     pass_filenames: false
   
+  - id: ty-check
+    name: ty check
+    language: system
+    entry: bash -c 'cd watcher && ty check'
+    files: ^watcher/
+    types_or: [python, pyi]
+    require_serial: true
+  
   - id: ruff-check
     name: ruff check
     language: system
     entry: bash -c 'cd watcher && uv run ruff check --force-exclude'
-    files: ^watcher/
-    types_or: [python, pyi]
-    require_serial: true
-
-  - id: pyright
-    name: pyright
-    language: system
-    entry: bash -c 'cd watcher && uv run pyright'
     files: ^watcher/
     types_or: [python, pyi]
     require_serial: true
